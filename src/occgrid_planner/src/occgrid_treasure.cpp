@@ -434,7 +434,7 @@ class OccupancyGridTreasure {
 			target_sub_ = nh_.subscribe("goal",1,&OccupancyGridTreasure::target_callback,this);
 			ROS_INFO("3 - le ROS INFO pas la");
 			signal_sub_ = nh_.subscribe("metal",1,&OccupancyGridTreasure::signal_callback,this);
-			finished_sub_ = nh_.subscribe("finished",false,&OccupancyGridTreasure::finished_callback,this);
+			finished_sub_ = nh_.subscribe("finished",true,&OccupancyGridTreasure::finished_callback,this);
 			ROS_INFO("4 - le ROS INFO quand il cat, retombe toujours sur ses pattes");
 			path_pub_ = nh_.advertise<nav_msgs::Path>("path",1,true);
 			point_pub_ = nh_.advertise<geometry_msgs::PoseStamped> ("point", 1, true);
