@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<launch>
+	<include file="$(find vrep_ros_teleop)/launch/teleop_mux.launch"/>
+
+	<node pkg="face_detect_base" type="rosfacedetect.py" name="face_detect" output="screen">
+		<remap from="~/image" to="/vrep/visionSensor"/>
+	</node>
+
+	<node name="task_server" pkg="floor_nav" type="task_server" output="screen" >
+		<!-- After install -->
+		<!-- <param name="lib_path" value="$(find floor_nav)/tasks"/> -->
+		<!-- While developing -->
+		<param name="lib_path" value="$(find floor_nav)/../../devel/share/floor_nav/tasks"/>
+		<param name="base_frame" value="rosControlledBubbleRob"/>
+		<param name="reference_frame" value="world"/>
+		<!--<param name="base_frame" value="body"/>
+		<param name="reference_frame" value="map"/>-->
+		<!--<remap from="/Region_Of_Interest" to="/rois_sender" />-->
+	</node>
+
+	<!--<node name="task_wander" pkg="floor_nav" type="test_roi.py" output="screen" > 
+		<remap from="/Region_Of_Interest" to="/rois_sender" />
+	</node>-->
+	
+	<!-- For the rosControlKinect scene
+	<node name="viz_graph" pkg="floor_graph" type="viz_graph.py" output="screen">
+	</node>
+	-->
+
+
+
+</launch>
+

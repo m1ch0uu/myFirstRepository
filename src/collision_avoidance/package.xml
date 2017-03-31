@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>collision_avoidance</name>
+  <version>0.0.0</version>
+  <description>The collision_avoidance package</description>
+  <maintainer email="romain.amuat@gmail.com">Romain</maintainer>
+  <maintainer email="Michou.Bucheronne.BM@gmail.com">Nora</maintainer>
+  <license>Free</license>
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>joy</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>joy</run_depend>
+  <run_depend>pcl_ros</run_depend>
+
+  <export>
+
+  </export>
+</package>

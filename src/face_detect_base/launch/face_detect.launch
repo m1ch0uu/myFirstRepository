@@ -1,0 +1,28 @@
+<launch>
+
+
+  <node pkg="face_detect_base" type="rosfacedetect.py" name="face_detect" output="screen">
+      <remap from="/face_detect/image" to="/vrep/visionSensor"/>
+  </node>
+
+	<remap from="/out_speed_from_joy" to="/treated_speed" />
+
+
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="turtle_joy" >
+    <param name="dev" type="string" value="/dev/input/js1" />
+    <param name="deadzone" value="0.12" />
+  </node>
+
+  <param name="axis_linear" value="7" type="int"/>
+  <param name="axis_angular" value="6" type="int"/>
+  <param name="scale_linear" value="0.4" type="double"/>
+  <param name="scale_angular" value="0.4" type="double"/>
+  <node pkg="joystick_teleop" type="joystick_teleop" name="teleop"/>
+
+	<param name="treshold_bottom" value="0" type="double"/>
+	<param name="treshold_up" value="0.0001" type="double"/>
+  	<param name="max_speed" value="0.4" type="double"/>
+	<node pkg="collision_avoidance" type="collision_avoidance" name="collision" output="screen"/>
+
+</launch>

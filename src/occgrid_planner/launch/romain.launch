@@ -1,0 +1,44 @@
+<launch>
+
+  <node pkg="occgrid_planner" type="occgrid_planner" name="planner" output="screen">
+    <param name="neighbourhood" value="8"/>
+    <param name="base_frame" value="/body"/>
+    <param name="debug" value="False"/>
+    <remap from="/planner/occ_grid" to="/map"/>
+    <remap from="/planner/goal" to="/move_base_simple/goal"/>
+  </node>
+
+
+  <node pkg="occgrid_planner" type="path_optimizer" name="path_optimizer" output="screen">
+      <param name="max_acceleration" value="0.3"/> 
+      <param name="max_braking" value="0.1"/> 
+      <param name="velocity" value="0.1"/> 
+      <remap from="/path_optimizer/path" to="/planner/path"/>
+  </node>
+
+  <node pkg="occgrid_planner" type="path_follower" name="path_follower" output="screen">
+      <param name="Kx" value="1.0"/>
+      <param name="Ky" value="1.0"/>
+      <param name="Ktheta" value="1.0"/>
+      <param name="max_rot_speed" value="1.0"/>
+      <param name="max_velocity" value="1.0"/>
+      <param name="max_error" value="0.5"/>
+      <param name="max_y_error" value="1.0"/>
+      <param name="look_ahead" value="1.0"/>
+      <param name="base_frame" value="/body"/>
+      <remap from="/path_follower/traj" to="/path_optimizer/trajectory"/>
+      <!--<remap from="/path_follower/twistCommand" to="/mux/autoCommand"/>-->
+      <remap from="/path_follower/twistCommand" to="/vrep/twistCommand"/>
+  </node>
+
+  <node pkg="occgrid_planner" type="occgrid_treasure" name="treasure" output="screen">
+    <param name="neighbourhood" value="8"/>
+    <param name="base_frame" value="/body"/>
+    <param name="debug" value="False"/>
+    <remap from="/treasure/occ_grid" to="/map"/>
+    <remap from="/treasure/goal" to="/move_base_simple/goal"/>
+    <remap from="~/metal" to="/vrep/metalDetector"/>
+    <remap from="~/point" to="/move_base_simple/goal"/>
+	<remap from="~/finished" to="/path_follower/finished"/>
+  </node>
+ </launch>

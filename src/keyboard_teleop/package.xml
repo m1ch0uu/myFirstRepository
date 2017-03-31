@@ -1,0 +1,14 @@
+<package>
+	<description>keyboard_teleop</description>
+	<author>JJM</author>
+	<maintainer email="romain.amuat@gmail.com">Romain</maintainer>
+	<license>BSD</license>
+	<url>http://ros.org/wiki/keyboard_teleop</url>
+	<buildtool_depend>catkin</buildtool_depend>
+	<build_depend>rospy</build_depend>
+	<build_depend>geometry_msgs</build_depend>
+	<name>teleop_keyboard</name>
+	<version>0.0.1</version>
+</package>
+
+

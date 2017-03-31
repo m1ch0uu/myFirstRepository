@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>joystick_teleop</name>
+  <version>0.0.0</version>
+  <description>The joystick_teleop package</description>
+  <maintainer email="romain.amuat@gmail.com">romain</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>joy</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>joy</run_depend>
+
+  <export>
+
+  </export>
+</package>
